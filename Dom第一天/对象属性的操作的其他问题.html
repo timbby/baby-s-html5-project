@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //根据给定的数组，创建页面结构。
+        var arr = ["张灿","一","而","三","四"];
+        document.write("<ul>");
+        for(var i = 0; i<arr.length;i++){
+            document.write("<li>"+arr[i]);
+            document.write("</li>");
+        }
+        document.write("</ul>");
+
+        var obj = {
+            name : "小花",
+            age : "18",
+            say : function(){
+                console.log("貌似很美丽");
+            }
+        }
+        document.write("<ul>");
+         for(var k in obj){
+//             document.write("<li>")
+           if(typeof(obj[k] == "function")){
+//
+               document.write("<li>"+ obj[k]() + "</li>");
+           }
+             else {
+               document.write("<li>"+obj[k] + "</li>");
+           }
+
+        }
+        document.write("</ul>");
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

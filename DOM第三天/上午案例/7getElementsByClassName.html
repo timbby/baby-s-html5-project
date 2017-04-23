@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="heZi"></div>
+<div class="heZi"></div>
+<div class="heZi" el></div>
+<div class="heZi"></div>
+
+<div id="box">
+  <div class="heZi la"></div>
+  <div class="heZi"></div>
+  <div class="heZi"></div>
+  <div class="heZi"></div>
+</div>
+
+<script>
+  //返回的结果是一个伪数组，内部保存的是根据类名获取到的元素
+  //var divs = document.getElementsByClassName("heZi");
+  //console.log(divs);
+  
+  //document可以更换为任意标签
+  //标签.getElementsByClassName("类名");
+  //var box = document.getElementById("box");
+  //var divs = box.getElementsByClassName("heZi");
+  
+  //console.log(divs[0]);
+  
+  //ie低版本(ie9以下)不支持该方法，同时也没有提供对应的功能
+  
+  //1 能力检测，如果当前运行的浏览器支持getElementsByClassName方法，就使用
+  //2 如果不支持，自己书写代码实现
+//  var elt
+  console.log(getEle("heZi"));
+  console.log(getEle("heZi", box));
+  function getEle(clasN,elt){
+    var j,result,temp;
+    elt = elt || document.body;
+    if(typeof document.getElementsByClassName == "function"){
+      return elt.getElementsByClassName(clasN);
+    }else{
+      //自己实现功能：
+      //1 获取body中的所有标签
+      var allTag = elt.getElementsByTagName("*");
+      var resultArr = [];//保存最终获取结果
+      for (var i = 0; i <allTag .length; i++) {
+        temp = allTag[i].className;
+        //temp可能有几个类名，然后用split分割。
+        result = temp.split(" ");
+        for (j = 0; j < result.length; j++) {
+          if(result[j] == clasN){
+            resultArr[resultArr.length] = allTag[i];
+            break;
+          }
+
+        }
+
+      }
+      return resultArr;
+    }
+
+  }
+
+//  for (var i = 0; i < allTag.length; i++) {
+//    //2 依次查看类名className属性值
+//    var tempClass = allTag[i].className;
+//
+//    //3 如果是我需要的
+//    if (tempClass == "heZi") {
+//      //4 保存即可
+//      resultArr[resultArr.length] = allTag[i];
+//    }
+//  }
+//  console.log(resultArr);for (var i = 0; i < allTag.length; i++) {
+  //    //2 依次查看类名className属性值
+  //    var tempClass = allTag[i].className;
+  //
+  //    //3 如果是我需要的
+  //    if (tempClass == "heZi") {
+  //      //4 保存即可
+  //      resultArr[resultArr.length] = allTag[i];
+  //    }
+  //  }
+  //  console.log(resultArr);
+  
+  //  }
+
+
+</script>
+
+
+</body>
+</html>

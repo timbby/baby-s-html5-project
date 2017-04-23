@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.输入一个数值,倒着打印出每一位
+        var num = parseInt(prompt("请您输入一个数值"));
+        //2.判断数值是否满足循环
+        var str="";
+        while(num!=0){
+            var key;
+            key = num%10;
+            num = parseInt(num/10);
+            str+=Math.abs(key);
+        }
+        console.log(str);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li id="li">我是第一个</li>
+            <li> <p></p></li>
+            <li></li>
+            <li>我是最后一个</li>
+        </ul>
+    </div>
+
+<script>
+    var li = document.getElementById("li");
+    var ul = document.body.getElementsByTagName("ul")[0];
+    var par = li.getElementsByTagName("p")[0];
+    console.log(li.parentNode);
+//    console.log(par.parentNode);
+    console.log(ul.childNodes);
+    console.log(ul.children);
+    console.log(ul.children[0]);
+    console.log(ul.children[ul.children.length-1]);
+    console.log(ul.firstChild);
+//    console.log(ul.firstChild[0]);
+    console.log(ul.firstElementChild);
+    console.log(ul.lastChild);
+    console.log(ul.lastElementChild);
+
+</script>
+</body>
+</html>

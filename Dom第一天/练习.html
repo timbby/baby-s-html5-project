@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //根据给定的数据，创建一个表格
+        document.write("<table>");
+
+        //heads用于创建表头
+//        document.write("<capital>");
+//        var heads = ["姓名", "性别", "年龄", "爱好"];
+//        document.write("</captial>");
+        document.write("<tr>");
+        var heads = ["姓名", "性别", "年龄", "爱好"];
+        for (var i = 0; i < heads.length; i++) {
+
+            document.write("<th>"+heads[i]+"</th>");
+        }
+        document.write("</tr>");
+        //datas用于创建tbody中第一个tr中的td
+        document.write("<tr>");
+        var datas = {name: "张三", gender: "男", age: 18, hobby: "跑步"};
+
+          for(var k in datas){
+              document.write("<td>"+datas[k]+"</td>");
+          }
+
+        document.write("</tr>");
+
+        document.write("</table>");
+    </script>
+    <style type="text/css">
+        td {
+            /*display: inline-block;*/
+            /*margin: 2px;*/
+            border:1px solid pink;
+            text-align: center;
+            /*height: 20px;*/
+        }
+
+    </style>
+</head>
+<body>
+
+</body>
+</html>

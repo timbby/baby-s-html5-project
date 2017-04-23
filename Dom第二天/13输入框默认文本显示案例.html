@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>今天天气不错</title>
+</head>
+<body>
+<input id="ipt" type="text" value="请输入秋裤">
+
+
+<script>
+    //由于输入框具有默认文本，如果获取焦点时，不清除，影响用户的输入
+    //在获取焦点时清空提示文本
+    //在失去焦点时，当内容为空时，还原为默认文本
+
+    //1 获取焦点
+    var ipt = document.getElementById("ipt");
+    var temp = ipt.value;
+    ipt.onfocus = function () {
+        this.value = "";
+    };
+    ipt.onblur = function () {
+        this.value = temp;
+    };
+
+
+</script>
+
+</body>
+</html>

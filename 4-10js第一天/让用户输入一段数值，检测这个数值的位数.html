@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str=parseInt(prompt("请输入一个数值"));
+        var sum=0;
+//        if(str==0){
+//            alert("1");
+//        }
+//        else {
+//            while (str) {//条件也可以是str!=0,说明整数位
+//                str = parseInt(str / 10);
+//                sum++;
+//            }
+//            alert(sum);
+//        }
+        do{
+            str=parseInt(str/10);
+            sum++;
+        }while(str);
+
+        alert(sum);
+
+//        while(str>=1){//这样就不能判断负数的位置了
+//            str = str/10;
+//            sum++;
+//        }
+//        alert(sum);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

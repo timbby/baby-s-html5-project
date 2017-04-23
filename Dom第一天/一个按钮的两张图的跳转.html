@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">按钮
+    </button>
+    <img src="images/images/111.jpg" alt="" id="pic">
+
+<script>
+    var btn = document.getElementById("btn");
+    var pic = document.getElementById("pic")
+    var flag = false;
+    btn.onclick = function () {
+//        var flag =false;
+        if(flag){
+            pic.src = "images/images/111.jpg";
+            flag = false;
+        }
+        else {
+            pic.src = "images/images/222.jpg";
+            flag = true;
+        }
+    };
+</script>
+</body>
+</html>

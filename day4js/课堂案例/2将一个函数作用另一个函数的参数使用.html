@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //将一个函数作为另一个函数的参数使用
+    
+    //因为函数本身也是一个数据类型，他就和其他的数据没有区别，使用上是相同的，只不过多了一个调用的功能
+    
+    
+    function myDay(zaoCan, wanFan, func) {
+      //zaoCao = "豆浆和油条"
+      //func = function () {
+      //   console.log("呵呵呵，今天天气不错");
+      //}
+      
+      console.log("起床");
+      console.log("上厕所");
+      console.log("洗漱");
+      console.log("在家吃早饭,吃的是" + zaoCan);
+      console.log("穿衣服");
+      console.log("坐公交车上班");
+      console.log("上午上课,抽烟");
+      console.log("中午吃饭");
+      //----------------
+//      //1 午休
+//      console.log("午休");
+//      //2 中午我跟其他的讲师讨论了一下课程
+//      console.log("课程讨论");
+//      //3 吃坏肚子了，一中午都在....
+//      console.log("pupupu");
+      
+      //我们需要在子功能不确定的位置，调用用户传入的内容
+      func();
+      
+      //--------------------
+      console.log("下午上课，抽烟");
+      console.log("吃晚饭,吃得是" + wanFan);
+      console.log("回家陪女朋友看看电视剧");
+      console.log("洗洗睡了");
+      console.log("------------------");
+    }
+    
+    //程序中：
+    //1 整体功能一定，但是某些值不确定，我们传递一些数据参数即可
+    //2 整体功能一定，但是内部的某些子功能不确定,就需要将一些代码作为参数传递
+    //在js中只有函数可以保存代码，当我们想要传递代码时，需要使用函数包裹后再整体传递即可（传递的是函数体）
+    
+    function fun() {
+      console.log("呵呵呵，今天天气不错");
+    }
+    
+    function fun1() {
+      console.log("今天比較累，中午睡了一会儿");
+    }
+    
+    myDay("豆浆和油条", "炒菜", fun);
+    myDay("豆腐脑和包子", "炒菜", fun1);
+  
+    //以上代码，可以将一段其他功能传递到主函数中进行使用
+    //上面的fun和fun1只是作为包裹使用，而不需要使用重用的功能
+    //我们可以使用匿名函数的形式，进行替换
+
+    //作为参数传递时使用匿名函数可能一时接受不了，可以使用命名函数的方式进行替换
+    myDay("豆浆和油条", "炒菜", function () {
+      console.log("呵呵呵，今天天气不错");
+    });
+    //要求，使用匿名函数作为参数时，必须分析函数的传参过程
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

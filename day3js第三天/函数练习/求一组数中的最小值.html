@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //定义一个取最小值的数组
+        function Min(arr){
+            var min = arr[0];//假设数组中的第一个数是最小值
+            for(var i = 1; i <= arr.length; i++){
+                if(arr[i] < min){
+                    min = arr[i];
+                }
+            }
+            return min;
+        }
+        var arr = [3,1,0,9];
+        console.log(Min(arr));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

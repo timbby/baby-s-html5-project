@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var flag = true ;
+        var num = prompt("请你输入一个你要判断的数");
+        for (var i = 2; i <= Math.sqrt(num) ; i++){
+            if(num % i == 0){
+                flag = false;
+            }
+        }
+        if(flag == true){
+            alert("是质数");
+        }
+        else {
+            alert("不是质数");
+        }
+        console.log(Math.sqrt(num));
+        console.log(Math.pow(num, 1 / 2));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

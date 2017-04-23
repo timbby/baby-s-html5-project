@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    select {
+      width: 150px;
+      background-color: #0099cc;
+    }
+  </style>
+</head>
+<body>
+<!--左边的下拉菜单   multiple：可以让下拉菜单多选 -->
+<select id="leftSel" size="10" multiple="multiple">
+  <option>苹果</option>
+  <option>香蕉</option>
+  <option>西瓜</option>
+  <option>牛油果</option>
+  <option>西红柿</option>
+</select>
+
+<!--四个选择按钮位置-->
+<input type="button" value=">>" id="allRight">
+<input type="button" value="<<" id="allLeft">
+<input type="button" value=">" id="right">
+<input type="button" value="<" id="left">
+
+<!--右边的下拉菜单-->
+<select id="rightSel" size="10" multiple="multiple">
+</select>
+<script>
+  //1 获取元素
+  var leftSel = document.getElementById("leftSel");
+  var rightSel = document.getElementById("rightSel");
+  var leftOpt = leftSel.children;
+  var leftBtn = document.getElementById("left");//左按钮
+  var rightBtn = document.getElementById("right");//右按钮
+  
+  //2 点击右按钮操作 : 将左侧选中的选项，移动到右侧
+  rightBtn.onclick = function () {
+    //遍历每个leftOpt，找到被选中的
+    for (var i = 0; i < leftOpt.length; i++) {
+      //判断，找到选中的选项
+      if (leftOpt[i].selected) {
+        //移动到右侧即可
+        rightSel.appendChild(leftOpt[i]);
+        
+        i--;
+      }
+    }
+  };
+  
+  //当我们点击右按钮操作时，会将左侧的选项移动到右侧，由于循环的次数有左侧的选项个数决定
+  //影响是：移动走一个，导致length属性降低，降低导致循环总次数减少，最终出现问题。
+  
+  
+  
+  //3 点击左按钮操作 ：将右侧选中的选项，移动到左侧
+  var rightOpt = rightSel.children;
+  
+  leftBtn.onclick = function () {
+    //遍历右侧的所有选项
+    for (var i = 0; i < rightOpt.length; i++) {
+      //找到选中的
+      if (rightOpt[i].selected) {
+        //移动到左侧即可
+        leftSel.appendChild(rightOpt[i]);
+      }
+    }
+  };
+
+
+</script>
+
+
+</body>
+</html>

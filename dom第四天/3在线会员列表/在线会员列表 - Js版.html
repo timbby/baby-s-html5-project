@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      word-wrap: break-word;
+    }
+    
+    .wp {
+      width: 730px;
+      margin: 0 auto;
+    }
+    
+    .mtn {
+      margin-top: 5px !important;
+    }
+    
+    #ct .frame {
+      margin: 0;
+      border: none;
+    }
+    
+    .xfs_2 .frame-title, .xfs_2 .frametitle, .xfs_2 .tab-title {
+      background-color: #A90000;
+      background-position: 0 -99px;
+    }
+    
+    .xfs .frame-title, .xfs .frametitle, .xfs .tab-title, .xfs .frame-title a, .xfs .frametitle a, .xfs .tab-title a {
+      color: #FFF !important;
+    }
+    
+    .xfs .frame-title, .xfs .frametitle, .xfs .tab-title {
+      border: none;
+      background: transparent url(images/mu.png) repeat-x 0 -99px;
+    }
+    
+    .title {
+      padding: 0 10px;
+      height: 32px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 32px;
+      overflow: hidden;
+    }
+    
+    .block {
+      margin: 10px 10px 0;
+    }
+    
+    ul, menu, dir {
+      display: block;
+      list-style-type: disc;
+      -webkit-margin-before: 1em;
+      -webkit-margin-after: 1em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+      -webkit-padding-start: 25px;
+    }
+    
+    .mls li {
+      padding: 0 0 10px;
+      width: 66px;
+      height: 85px;
+    }
+    
+    .ml li {
+      float: left;
+      text-align: center;
+      overflow: hidden;
+    }
+    
+    a {
+      color: #333;
+      text-decoration: none;
+      font: 12px/1.5 Tahoma, 'Microsoft Yahei', 'Simsun';
+    }
+    
+    .mls p {
+      margin-top: 5px;
+    }
+    
+    .ml p, .ml span {
+      display: block;
+      width: 100%;
+      height: 20px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    
+    .mls img {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .ml img {
+      display: block;
+      margin: 0 auto;
+    }
+    
+    a img {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+<div class="wp mtn">
+  <div id="diy3" class="area">
+    <div id="frameipq7f2" class="xfs xfs_2 frame move-span cl frame-1">
+      <div class="title frame-title"><span class="titletext">当前在线用户</span></div>
+      <div id="frameipq7f2_left" class="column frame-1-c">
+        <div id="frameipq7f2_left_temp" class="move-span temp"></div>
+        <div id="portal_block_695" class="block move-span">
+          <div id="portal_block_695_content" class="dxb_bc">
+            <div class="module cl ml mls" id="users">
+              <ul id="list">
+                <!-- 用户列表位置-->
+              
+              
+              </ul>
+            </div>
+            <div style="clear: both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  //模拟从后台接受的数据
+  var datas = [
+    {"name": "tdxy01", "icon": "images/noavatar_small.gif"},
+    {"name": "沉眠楚人2", "icon": "images/noavatar_small.gif"},
+    {"name": "爱上karina", "icon": "images/75_avatar_small.jpg"},
+    {"name": "tdxy01", "icon": "images/89_avatar_small.jpg"},
+    {"name": "today", "icon": "images/noavatar_small.gif"},
+    {"name": "hlg", "icon": "images/noavatar_small.gif"},
+    {"name": "itcast", "icon": "images/noavatar_small.gif"},
+    {"name": "heima", "icon": "images/noavatar_small.gif"},
+    {"name": "huima", "icon": "images/noavatar_small.gif"},
+    {"name": "gege", "icon": "images/noavatar_small.gif"},
+    {"name": "nimei", "icon": "images/noavatar_small.gif"},
+    {"name": "goodman", "icon": "images/noavatar_small.gif"},
+    {"name": "haoren", "icon": "images/noavatar_small.gif"},
+    {"name": "yuanxiaojie", "icon": "images/noavatar_small.gif"},
+    {"name": "zhengyue", "icon": "images/noavatar_small.gif"},
+    {"name": "qishi2", "icon": "images/noavatar_small.gif"},
+    {"name": "qishi2", "icon": "images/noavatar_small.gif"},
+    {"name": "qqtang", "icon": "images/noavatar_small.gif"},
+    {"name": "wawawa", "icon": "images/noavatar_small.gif"},
+    {"name": "haha", "icon": "images/noavatar_small.gif"},
+    {"name": "robot", "icon": "images/noavatar_small.gif"},
+    {"name": "送终机", "icon": "images/noavatar_small.gif"},
+    {"name": "lovmilan", "icon": "images/noavatar_small.gif"},
+    {"name": "johnny670", "icon": "images/noavatar_small.gif"},
+    {"name": "xiaobinbin02", "icon": "images/noavatar_small.gif"}
+  ];
+  
+  
+  //模拟从后台接受的一组数据
+  //由于在线的会员人数变更较大，不可能在页面中写死(固定结构)，需要根据接收到的数据进行动态创建
+  //datas中的对象个数决定了在线的人员个数
+  //每个对象具有两个属性，name表示用户名，icon属性表示用户的头像地址
+  
+  
+  //1 找到要添加的位置
+  var list = document.getElementById("list");
+  
+  //2 创建用户的结构，添加即可
+  //我们知道了一个用户的结构，只要根据datas中元素的个数进行多次创建
+  //观察一个用户的结构，我们发现，由于结构十分复杂，使用document.createElement不适合，使用innerHTML更好
+ 
+  //3 设置给list的innerHTML属性即可
+  var str;
+//  for (var i = 0; i < datas.length; i++) {
+//    str += '<li><a href="#" target="_blank">' +
+//      '<img src="'+ datas[i].icon+'" width="48" height="48" alt="tdxy01">' +
+//      '</a> <p>' +
+//      '<a href="#" title="tdxy01" target="_blank">' +
+//      datas[i].name +
+//      '</a></p>' +
+//      '</li>';
+//  }
+  for (var i = 0; i < datas.length; i++) {
+      str+= '<li><a href="#" target="_blank"><img src="'+ datas[i].icon +'" width="48"\
+                                               height="48" alt="tdxy01"></a>\
+             <p><a href="#" title="tdxy01" target="_blank">'+datas[i].name+'</a></p></li>'
+
+  }
+  list.innerHTML+=str;
+  
+  //拿到一段html结构后，需要进行处理的步骤
+  //0 先给html结构前后添加字符串的标识符(不能和html属性的标识符相同)
+  //一个字符串中不能进行换行
+  //1 拿到html结构后，我们需要先将换行删除
+  //2 由于字符串结构比较长，操作不方便，我们可以在需要的位置点击回车（编辑器会帮我们自动添加字符串的标识符和拼接的加号）
+//  var str = '<li><a href="#" target="_blank">' +
+//    '<img src="images/noavatar_small.gif" width="48" height="48" alt="tdxy01">' +
+//    '</a> <p>' +
+//    '<a href="#" title="tdxy01" target="_blank">' +
+//    'tdxy01' +
+//    '</a></p>' +
+//    '</li>';
+//  var str ='<li><a href="#" ' +
+//          'target="_blank">' +
+//          '<img src="images/noavatar_small.gif" ' +
+//          'width="48"height="48" alt="tdxy01"></a>' +
+//          ' <p><a href="#" title="tdxy01" target="_blank">' +
+//          'tdxy01' +
+//          '</a></p></li>'
+
+
+</script>
+</body>
+</html>

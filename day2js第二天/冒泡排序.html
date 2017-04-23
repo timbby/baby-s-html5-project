@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+         //获取一个数组
+//        var arr = [1,2,4,5,89,4,2,1];
+//        var temp;
+//        for(var i = 1; i <= arr.length-1; i++){
+//            for(var j = 0; j <= arr.length-1-i; j++){
+//                if(arr[j] > arr[j+1]){
+//                    temp = arr[j];
+//                    arr[j] = arr[j+1];
+//                    arr[j+1] = temp;
+//                }
+//
+//            }
+//        }
+//         console.log(arr);
+        var arr = [1,2,4,5,6,8,3];
+//        var flag = true ;
+         var count = 0 ;
+         var temp;
+         var flag ;
+        for(var i = 1; i <= arr.length-1; i++){
+            flag = true ;
+            count ++;
+            for(var j = 0; j <= arr.length-1-i; j++){
+
+                if(arr[j] >= arr[j+1]) {
+                    temp = arr[j];
+                    arr [j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    flag = false;
+
+                }
+
+            }
+            if (flag == true) {
+                break;
+            }
+        }
+         console.log(arr);
+         console.log(count);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

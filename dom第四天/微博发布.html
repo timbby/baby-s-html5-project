@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline: none;
+            resize: none;
+        }
+
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+
+        ul li {
+            /*line-height: 25px;*/
+            border-bottom: 1px dashed #cccccc;
+            word-break: break-all;
+        }
+
+        input,button {
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box" id="weibo">
+    <span>微博发布</span>
+    <textarea name="" id="txt" cols="20" rows="10"></textarea>
+    <button id="btn">发布</button>
+    <ul id="ul">
+
+    </ul>
+</div>
+
+
+<script>
+    var txt = document.getElementById("txt");//用于获取输入的内容
+    var btn = document.getElementById("btn");//操作的发布按钮
+    var list = document.getElementById("ul");//新微博要放置的位置
+
+    //  //1 点击发布按钮
+    //  btn.onclick = function () {
+    //    //2 判断输入的内容，如果没有内容，提示输入内容
+    //    if (txt.value == "") {
+    //      alert("今天天气不错，你没有输入内容");
+    //    } else {
+    //      //3 如果用户输入了内容，创建一个新的微博即可 li
+    //      var li = document.createElement("li");
+    //      li.innerText = txt.value;
+    //      //4 添加到页面中的指定位置，需要考虑添加的位置
+    //      var lis = list.children;
+    ////      //情况1，如果没有发布过微博，直接插入即可
+    ////      if (lis.length == 0) {
+    ////        list.appendChild(li);
+    ////      } else {
+    ////        //情况2，如果发布过了微博，添加到第一个微博前面
+    ////        list.insertBefore(li, lis[0]);
+    ////      }
+    //
+    //      list.insertBefore(li, lis[0]);
+    //
+    //
+    //      //提高用户体验，当新的微博发布后，清除已经输入的内容
+    //      txt.value = "";
+    //
+    //    }
+    //
+    //  };
+    //
+    var txt = document.getElementById("txt");
+    var btn = document.getElementById("btn");
+    var list = document.getElementById("ul");
+    btn.onclick = function () {
+        if(txt.value == ""){
+            alert("你需要输入数据");
+        }
+        else{
+            var li = document.createElement("li");
+            li.innerText = txt.value;
+            var lis = list.children;
+            list.insertBefore(li,lis[0]);
+            var btnl = document.createElement("button");
+            btnl.innerText = "删除";
+            li.appendChild(btnl);
+            btnl.onclick= function () {
+                list.removeChild(this.parentNode);  //li如果在、
+            };
+            txt.value = "";
+        }
+
+    };
+</script>
+</body>
+</html>

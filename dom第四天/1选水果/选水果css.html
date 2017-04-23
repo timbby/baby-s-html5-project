@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    select {
+      width: 150px;
+      background-color: #0099cc;
+    }
+  </style>
+</head>
+<body>
+<!--左边的下拉菜单   multiple：可以让下拉菜单多选 -->
+<select id="leftSel" size="10" multiple="multiple">
+  <option>苹果</option>
+  <option>香蕉</option>
+  <option>西瓜</option>
+  <option>牛油果</option>
+  <option>西红柿</option>
+</select>
+
+<!--四个选择按钮位置-->
+<input type="button" value=">>" id="allRight">
+<input type="button" value="<<" id="allLeft">
+<input type="button" value=">" id="right">
+<input type="button" value="<" id="left">
+
+<!--右边的下拉菜单-->
+<select id="rightSel" size="10" multiple="multiple">
+</select>
+<script>
+  //1 获取元素
+  var leftSel = document.getElementById("leftSel");
+  var rightSel = document.getElementById("rightSel");
+  var leftOpt = leftSel.children;
+  var leftBtn = document.getElementById("left");//左按钮
+  var rightBtn = document.getElementById("right");//右按钮
+  var allRight = document.getElementById("allRight");
+  var allLeft = document.getElementById("allLeft");
+
+  rightBtn.onclick = function () {
+    for (var i = 0; i < leftOpt.length; i++) {
+      if(leftOpt[i].selected){
+        rightSel.appendChild(leftOpt[i]);
+        i--;
+      }
+    }
+  };
+  var rightOpt = rightSel.children;
+  leftBtn.onclick=function(){
+    for (var i = 0; i < rightOpt.length; i++) {
+      if(rightOpt[i].selected){
+        leftSel.appendChild(rightOpt[i]);
+        i--;
+      }
+    }
+  };
+
+  allRight.onclick = function(){
+    for (var i = 0; i <leftOpt .length; ) {
+      rightSel.appendChild(leftOpt[i]);
+
+    }
+  };
+  allLeft.onclick = function(){//因为i++与i--抵消了。
+    for (var i = 0; i <rightOpt .length; ) {
+      leftSel.appendChild(rightOpt[i]);
+
+    }
+  };
+
+
+</script>
+
+
+</body>
+</html>

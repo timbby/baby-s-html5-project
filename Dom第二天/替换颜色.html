@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .colorRed {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+<script>
+    var btn = document.getElementsByTagName("button");
+//    for (var i = 0; i < btn.length; i++) {
+//
+//        btn[i].onclick = function(){
+//            for (var i = 0; i <btn.length; i++) {
+//              btn[i].className = "";
+//            }
+//            this.className = "colorRed";
+//        };
+//    }
+
+    var btn = document.getElementsByTagName("button");
+    var suoyin = 0;
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].index = i;
+        btn[i].onclick = function(){
+            btn[suoyin].className = "";
+            this.className ="colorRed";
+            suoyin=this.index;
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

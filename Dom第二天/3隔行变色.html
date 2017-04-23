@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .linkl {
+            background-color: aqua !important;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>我要变色</li>
+    <li>我要变色</li>
+    <li>我要变色</li>
+    <li>我要变色</li>
+    <li>我要变色</li>
+</ul>
+<script>
+    var change = document.getElementsByTagName("li");
+    for (var i = 0; i < change.length; i++) {
+        if (i % 2 == 0) {
+            change[i].style.backgroundColor = "pink";
+        }
+        else {
+            change[i].style.backgroundColor = "purple";
+        }
+        change[i].onmouseover = function () {
+            this.className = "linkl";
+            change[i].className = ""
+        };
+        change[i].onmouseout = function(){
+            this.className = "";
+        };
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //斐波那契函数
+//        var num1 = 1;
+//        var num2 = 1;
+//        var times = prompt("shuru ");
+//        var arr = new Array();
+//        arr[0] = 1;
+//        arr[1] = 1;
+//        for (var i = 2; i< times ; i++){
+//            arr[i] = arr[i-1]+arr[i-2];
+//        }
+//        console.log(arr[times - 1]);
+
+//        var num1 = 1;
+//        var num2 = 1;
+//        var sum = 0;
+//        for(var i=3 ; i<=12 ; i++){
+//            sum = num1 + num2;
+//            num1 = num2; //每次都更新数值
+//            num2 = sum;
+//        }
+//        console.log(sum);
+
+        //计算1-100之间的质数
+//
+        //2.?求200-300之间所有的奇数的和（用continue）
+//        var sum = 0;
+//        for(var i = 200 ; i <= 300 ; i++){
+//            if(i % 2 !=0) {
+//                sum+=i;
+//                continue;
+//            }
+//        }
+//        console.log(sum);
+
+        //4.?求1到100之间所有不能被3整除的整数的第一个大于2000的和（用continue和break）
+        var sum = 0;
+        for(var i = 1; i <= 100; i++){
+            if(i % 3 !=0){
+                sum+=i;
+                if(sum > 2000) {
+                    break;
+                }
+                continue;
+            }
+        }
+        console.log(i);
+        console.log(sum);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

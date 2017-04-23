@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <table>
+        <!--全选反选按钮所在行-->
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" id="selectAll"/>
+            </th>
+            <th>菜名</th>
+            <th>饭店</th>
+        </tr>
+        </thead>
+
+        <!--每一个菜的选项-->
+        <tbody id="cai">
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>红烧肉</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>西红柿鸡蛋</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>红烧狮子头</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>日式肥牛</td>
+            <td>田老师</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<script>
+    //1 获取元素
+    //  var selectAll = document.getElementById("selectAll");//全选按钮
+    //  var cbs = document.getElementById("cai").getElementsByTagName("input");//底部的复选框
+    //
+    //  //2 点击全选按钮，选中下面的4个小复选框
+    //  selectAll.onclick = function () {
+    //    //我们发现，点击全选按钮时，要设置小复选框的状态为两种
+    //    //我们又发现，下面的状态设置是根据顶部全选按钮的状态决定的
+    //
+    //    //修改每个cbs中的复选框的checked属性为true即可
+    //    for (var i = 0; i < cbs.length; i++) {
+    //
+    //      //根据this的checked属性判断
+    //      if (this.checked == true) {
+    //        cbs[i].checked = true;
+    //      } else {
+    //        cbs[i].checked = false;
+    //      }
+    //    }
+    //
+    //  };
+    //    var selectAll = document.getElementById("selectAll");
+    //    var chege = document.getElementById("cai").getElementsByTagName("input");
+    //    selectAll.onclick = function () {
+    //        for (var i = 0; i < chege.length; i++) {
+    //
+    //            if(this.checked){
+    //                chege[i].checked = true;
+    //            }
+    //            else {
+    //                chege[i].checked = false;
+    //            }
+    //        }
+    //    }
+    var selectAll = document.getElementById("selectAll");
+    var chege = document.getElementById("cai").getElementsByTagName("input");
+
+//    for (var i = 0; i < chege.length; i++) {
+
+
+        selectAll.onclick = function () {
+            for (var i = 0; i < chege.length; i++) {
+//                    if(this.checked){
+//                        chege[i].checked = true;
+//                    }
+//                    else {
+//                        chege[i].checked = false;
+//                    }
+                chege[i].checked = this.checked;
+            }
+        }
+        var flag;
+            for (var i = 0; i <chege .length; i++) {
+
+                chege[i].onclick = function () {
+                    flag = true;
+                    for (var j = 0; j < chege.length; j++) {
+                        if (chege[j].checked == false) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    selectAll.checked = flag;
+                }
+            }
+
+
+
+
+
+
+</script>
+</body>
+</html>

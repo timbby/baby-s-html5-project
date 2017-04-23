@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script>
+  var box = document.getElementById("box");
+  
+  //设置样式:使用js设置的样式在标签的行内生效
+  //box.style.width = "100px";
+  //box.style.height = "100px";
+  //box.style.backgroundColor = "red";
+  
+  //获取样式的值：使用style的方式获取的样式值也只能是行内形式
+  //如果是非行内(内嵌式、外链式)设置的样式，无法获取到对应的样式值
+  //console.log(box.style.width);
+  
+  //如果我们想要获取标签书写在任意位置的样式，需要新的方式
+  //get 获取  computed 计算后的 style 样式
+  //getComputedStyle(要进行样式获取的标签,null) 获取计算后的样式:可以获取各种位置设置的样式值
+  //第二个位置表示某个标签的伪元素，通常传入null或者0或者false
+  //使用getComputedStyle获取的结果是所有样式的集合(对象形式)
+  //如果想要访问具体的某一个样式，需要.样式名
+  
+  //console.log(getComputedStyle(box, null).width);
+  //console.log(getComputedStyle(box, null).height);
+  
+  //我们发现ie低版本(ie9以下)不支持这个标准方法getComputedStyle()
+  //此功能在除ie以外的浏览器中不支持
+  //ie自己使用  标签.currentStyle 获取结果与getComputedStyle()的结果相同
+  //console.log(box.currentStyle.width);
+  
+  //由于现在要获取一个标签的样式，有了两种方式，并且没有通过的方式，需要使用能力检测
+  //两种方式的形式不同：
+  //1 属性不存在结果为undefined
+  //2 getComputedStyle如果不支持会报错，导致后面的代码无法运行
+  // 结论，使用时，先检测currentStyle
+  
+  //console.log(a);//a is not defined;
+  //  if (box.currentStyle) {
+  //    console.log(box.currentStyle.width);
+  //  } else {
+  //    console.log(getComputedStyle(box, null).width);
+  //  }
+  
+  console.log(getStyle(box, "width"));
+  //封装为一个函数
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

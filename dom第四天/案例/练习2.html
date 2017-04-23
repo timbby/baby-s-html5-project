@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      width: 200px;
+      height: 150px;
+      border: 1px solid #000;
+      float: left;
+      margin: 10px;
+      padding: 10px;
+    }
+    
+    p {
+      background-color: #ff1f30;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div id="box1">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+</div>
+<div id="box2"></div>
+
+<span id="sp"></span>
+<script>
+  //1 获取元素
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var sp = document.getElementById("sp");
+  var ps = box1.children;//所有要操作的p标签
+  
+  //  //2 遍历，添加事件
+  //  for (var i = 0; i < ps.length; i++) {
+  //    ps[i].onclick = function () {
+  //      //根据当前元素的父元素，检测要添加的位置
+  //      if (this.parentNode == box1) {
+  //        //第一种情况是添加到box2中
+  //        box2.appendChild(this);
+  //      } else {
+  //        //第二种情况是添加到box1中
+  //        box1.appendChild(this);
+  //      }
+  //    };
+  //  }
+  
+  var flag = true;
+  //true代表了当前元素添加到右侧
+  //false代表了当前元素添加到左侧
+  
+  //我们发现，这时使用一个flag控制多个元素的运动位置，不准确，多个标签运动后，会相互影响
+  
+  //如果每个标签运动时使用的flag独立，相互不影响，就不会出问题了。
+  
+  //给每个p标签添加一个独立的属性flag，分别控制自身运动的方式
+  
+  //第二种方式使用flag
+  for (var i = 0; i < ps.length; i++) {
+    ps[i].flag = true;
+    ps[i].onclick = function () {
+      //根据当前元素的父元素，检测要添加的位置
+      if (this.flag) {
+        //第一种情况是添加到box2中
+        box2.appendChild(this);
+        this.flag = false;
+      } else {
+        //第二种情况是添加到box1中
+        box1.appendChild(this);
+        this.flag = true;
+      }
+      
+      sp.innerHTML = this.flag;
+      
+    };
+  }
+</script>
+
+
+</body>
+</html>

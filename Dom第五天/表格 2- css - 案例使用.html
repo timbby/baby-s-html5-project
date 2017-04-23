@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    tbody td {
+      width: 165px;
+      height: 19px;
+    }
+  </style>
+</head>
+<body>
+<!--添加按钮-->
+<a id="add" href="javascript:void(0)">添加</a>
+<!--放置表格的位置-->
+<div id="box">
+
+</div>
+<script>
+  //-------------------------创建表格的数据-----------------------------
+  //表头的数据
+  var heads = ["姓名", "科目", "成绩", "操作"];
+  //根据datas中对象的个数创建tr行，每个行中的td个数就是这个对象的属性个数
+  var datas = [
+    {"name": "张三1", "subject": "语文1", "score": 99.8},
+    {"name": "张三2", "subject": "语文2", "score": 80.8},
+    {"name": "张三3", "subject": "语文3", "score": 70.8},
+    {"name": "张三4", "subject": "语文4", "score": 100},
+    {"name": "张三5", "subject": "语文5", "score": 60},
+    {"name": "张三6", "subject": "语文6", "score": 70},
+    {"name": "张三7", "subject": "语文7", "score": 89.8}
+  ];
+  
+  //-------------------步骤1：结构创建部分------------------
+  var box = document.getElementById("box");
+  
+  //1 创建table
+  var table = crt("table");
+  table.border = "1";
+  table.style.borderCollapse = "collapse";
+  table.style.width = "650px";
+  box.appendChild(table);
+  
+  //2 创建thead
+  var thead = crt("thead");
+  thead.style.backgroundColor = "#ccc";
+  table.appendChild(thead);
+  
+  //3 创建tr
+  var tr = crt("tr");
+  thead.appendChild(tr);
+  
+  //4 创建th，th的个数根据heads中元素的个数创建
+  var th;
+  for (var i = 0; i < heads.length; i++) {
+    th = crt("th");
+    th.innerText = heads[i];
+    tr.appendChild(th);
+  }
+  
+  //5 创建tbody
+  var tbody = crt("tbody");
+  tbody.style.textAlign = "center";
+  table.appendChild(tbody);
+  
+  //6 tbody内部的tr个数由datas中元素的个数决定
+  var k, td;
+  for (var i = 0; i < datas.length; i++) {
+    //7 每一次循环内执行的代码就是一行中所要创建的内容
+    tr = crt("tr");
+    tbody.appendChild(tr);
+    
+    //8 行内部的td，td个数由datas中每个对象的属性个数决定
+    for (k in datas[i]) {
+      //k 属性名 字符串形式
+      //datas[i][k] - k 属性对应的属性值
+      td = crt("td");
+      tr.appendChild(td);
+      td.innerText = datas[i][k];
+    }
+    
+    
+  }
+  
+  //用于创建元素
+  function crt(tagName) {
+    return document.createElement(tagName);
+  }
+  //-------------------步骤2：删除操作部分------------------
+  
+  
+  //-------------------步骤3：添加操作部分------------------
+
+</script>
+
+
+</body>
+
+</html>

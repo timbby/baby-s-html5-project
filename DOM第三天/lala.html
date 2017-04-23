@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>我是第一个内容</li>
+    <li>我是第二个内容</li>
+    <li>我是第三个内容</li>
+    <li>我是第四个内容</li>
+</ul>
+<script>
+    //    var list = document.getElementsByTagName("li");//list是一个存储li标签的数组。
+        for (var i = 0; i < list.length; i++) {//遍历list数组。
+            list[i].onclick = function(){ //给list里面的每一个数据一个onclick的点击事件。
+                console.log(this.innerHTML);//需要获取当前的点击对象。
+            }
+
+
+    function crtea() {
+        this.name = "小",
+        this.age = 18
+    }
+    var obj = new crtea();
+    console.log(obj);
+        }
+
+
+</script>
+</body>
+</html>

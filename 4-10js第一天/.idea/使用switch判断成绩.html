@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var score = parseInt(prompt("请您输入一个分数"));
+        while(true){
+            if(score>100||score<0){
+                score = parseInt(prompt("请您重新一个分数"));
+            }
+            else {
+                break;
+            }
+        }
+        switch (true) {
+            case score>=90&&score<=100:
+                alert("优秀");
+                break;
+            case score<90&&score>=80 :
+                alert("良好");
+                break;
+            case score<80&&score>=70 :
+                alert("中等");
+                break;
+            case score<70&& score>=60:
+                alert("合格");
+                break;
+            case score>0&&score<60 :
+                alert("不及格");
+                break;
+            default :
+//                alert("哈哈哈")
+                break;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

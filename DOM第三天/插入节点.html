@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            height:400px;
+            width: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<button>按钮</button>
+<div>
+    <p>lalal</p>
+    <p>lalal</p>
+    <p>lalal</p>
+    <p>lalal</p>
+</div>
+<p id="inse">我要插入</p>
+<script>
+    var btn = document.body.getElementsByTagName("button")[0];
+    var div = document.getElementsByTagName("div")[0];
+    var inse = document.getElementById("inse");
+
+    btn.onclick = function(){
+//        div.appendChild(inse);
+        div.insertBefore()
+    }
+</script>
+</body>
+</html>

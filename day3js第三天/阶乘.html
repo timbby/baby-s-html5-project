@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function jiecheng (num){
+            var sum =1;
+            for (var i = 1; i <= num; i++) {
+                sum*=i; //求一个数的阶乘
+            }
+            return sum;//返回一个数的阶乘
+        }
+        console.log(jiecheng(5));
+        function all(num2){
+            var tor = 0;
+            for(var i = 1; i <= num2 ;i++){ //求每个数的阶乘
+                tor += jiecheng(i); //求每个数阶乘的和
+            }
+            return tor;
+        }
+        console.log(all(5));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

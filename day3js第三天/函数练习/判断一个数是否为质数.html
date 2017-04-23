@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //创建一个判断质数的函数
+        function fun(num){
+            var flag = true;
+            if( num <=1){
+                alert("您输入的数据不合格");
+            }
+            else {
+                var j;
+
+                for (j = 2; j <= parseInt(Math.sqrt(num)); j++) {
+                    if (num % j == 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                    if (flag) {
+                        alert(num + "是质数");
+                    }
+                    else {
+                        alert(num + "不是质数");
+                    }
+            }
+        }
+        var num = prompt("您输入一个数");
+        fun (num);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

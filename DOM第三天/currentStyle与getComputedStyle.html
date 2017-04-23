@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+        div:after{
+            height:20px;
+            width: 20px;
+            background-color: aqua;
+            display: block;
+            content: "";
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+</div>
+<script>
+    var box = document.getElementById("box");
+    console.log(cre(box, "width","after"));
+//    function cre(box, textl ) {
+//        if (box.currentStyle) {
+//            return box.currentStyle[textl];
+//        }
+//        else {
+//            return getComputedStyle(box, null)[textl];
+//        }
+//
+//    }
+    function cre(box, textl ,tr) {
+        if (box.currentStyle) {
+            return box.currentStyle[textl];
+        }
+        else {
+            return getComputedStyle(box, tr)[textl];
+        }
+
+    }
+
+</script>
+</body>
+</html>

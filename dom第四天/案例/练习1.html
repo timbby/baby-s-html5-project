@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: #1d23dd;
+      position: absolute;
+      line-height: 100px;
+      font-size: 50px;
+      text-align: center;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+<div>!</div>
+<div>哦</div>
+<div>错</div>
+<div>不</div>
+<div>气</div>
+<div>天</div>
+<div>儿</div>
+<div>今</div>
+
+</body>
+<script>
+  //1 获取每个div
+  var divs = document.body.getElementsByTagName("div");
+  
+  //2 添加事件
+  for (var i = 0; i < divs.length; i++) {
+    divs[i].onclick = function () {
+      //3 添加到所有div的最前面
+      document.body.insertBefore(this, document.body.children[0]);
+    };
+  }
+
+
+</script>
+
+</body>
+</html>

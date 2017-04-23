@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //取出一个需要去重的数组
+        var arr = [2,2,3,4,5,3,2,6,7];
+        //定义一个新的存储的数组
+        var arrResult = [];
+        var j ;
+        var flag; //定义一个假设值，假设arr的元素可以加入到新的数组中
+        for (var i = 0; i < arr.length; i++) {
+            flag = true; //假设，当前的arr[i]可以放入
+          for (j = 0; j < arrResult.length; j++) {
+                if(arr[i] == arrResult[j]){ //如果任意一项和当前项相等了则阻止放入
+                    flag = false;
+                    break;
+                }
+          }
+            if(flag){
+                arrResult[arrResult.length] = arr[i];
+            }
+        }
+        console.log(arrResult);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        //操作标签的文本：标签.innerHTML属性
+        //1设置纯文本
+        //document.getElementById("box").innerHtML = "jintian "
+        //2设置内部标签
+
+        //3混合使用
+        //4获取box内部的所有内容（文本+标签）
+//        document.getElementById("box").innerHTML = "我是谁？";
+//        document.getElementById("box").innerHTML += "<span>我是卖报的小花鸟</span>";
+//        document.getElementById("box").innerHTML += "哈哈哈";
+        /**
+         * 用于书写函数的功能
+         *
+         *
+         * @type {Element}
+         */
+//        var box = document.getElementById("box1");
+//        box.style.width = "100px";
+//        box.style.height = "100px";
+//        box.style.backgroundColor = "red";
+//        box.innerHTML = "文本为我BOX1";
+//
+//        var box2 = document.getElementById("box2");
+//        box2.style.width = "200px";
+//        box2.style.height = "200px";
+//        box2.style.backgroundColor = "black";
+//        box2.innerHTML = "文本为我BOX@";
+
+        //设置一个函数，封装改变样式和文字的功能
+        /**
+         *
+         * @param id
+         * @param w
+         * @param h
+         * @param bgc
+         * @param text
+         */
+        function changgesyle(id,w,h,bgc,text){
+            var box = document.getElementById(id);
+            box.style.width = w + "px";
+            box.style.height = h + "px";
+            box.style.backgroundColor = bgc;
+            box.innerHTML = text;
+            box.style.margin = "0px";
+            box.style.padding = "0px";
+        }
+
+        changgesyle("box1",100,100,"red","我饿胡思");
+        changgesyle("box2",200,200,"pink","我饿胡思2");
+
+        Dom中所有的
+    </script>
+</body>
+</html>

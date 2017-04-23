@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox" name="one"> 玩
+<input type="checkbox" name="one"> 睡觉
+<input type="checkbox" name="one"> 喝水
+<input type="checkbox" name="one"> 听歌
+<button>全选</button>
+<script>
+    var ipt = document.getElementsByName("input");
+    var btn = document.getElementsByName("button")[0];
+    btn.onclick = function () {
+        var suoyin = 0;
+        for (var i = 0; i < ipt.length; i++) {
+            ipt[i].index = i;
+            suoyin = ipt[i].index;
+            ipt[suoyin].selected = true;
+        }
+    };
+</script>
+</body>
+</html>

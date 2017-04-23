@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>今天天气不错</li>
+        <li>今天天气不错</li>
+        <li>今天天气不错</li>
+        <li>今天天气不错</li>
+        <li>今天天气不错</li>
+    </ul>
+<script>
+    var box = document.getElementsByTagName("li");
+    for (var i = 0; i < box.length; i++) {
+        box[i].index = i;
+        box[i].onclick = function(){
+            console.log(cre(box[this.index]));
+        }
+
+    }
+
+    function cre(tab){
+        if(tab.innerText!==undefined){
+            return tab.innerText;
+        }
+        else {
+            return tab.textContent;
+        }
+    }
+</script>
+</body>
+</html>

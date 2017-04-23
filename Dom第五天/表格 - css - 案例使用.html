@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        tbody td {
+            width: 165px;
+            height: 19px;
+        }
+    </style>
+</head>
+<body>
+<!--添加按钮-->
+<a id="add" href="javascript:void(0)">添加</a>
+<!--放置表格的位置-->
+<div id="box">
+
+
+</div>
+<script>
+    //------------------------- 创建表格数据-----------------------------
+    //表头的数据 创建th使用
+    var heads = ["姓名", "科目", "成绩", "操作"];
+    //根据datas中对象的个数创建tr行，每个行中的td个数就是这个对象的属性个数
+    var datas = [
+        {"name": "张三1", "subject": "语文1", "score": 99.8},
+        {"name": "张三2", "subject": "语文2", "score": 80.8},
+        {"name": "张三3", "subject": "语文3", "score": 70.8},
+        {"name": "张三4", "subject": "语文4", "score": 100},
+        {"name": "张三5", "subject": "语文5", "score": 60},
+        {"name": "张三6", "subject": "语文6", "score": 70},
+        {"name": "张三7", "subject": "语文7", "score": 89.8}
+    ];
+
+    // 创建table(封装一个函数)
+    var box = document.getElementById("box");
+    var table = document.createElement("table");
+    var thead = document.createElement("thead");
+    box.appendChild(table);
+    table.border = "1";
+    //  table.style.....;
+    //  table.style.collapse = "2";
+    table.appendChild(thead);
+    var trh = document.createElement("tr");
+    thead.appendChild(trh);
+    var tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+    tbody.style.textAlign = "center";
+    var thh;
+    for (var i = 0; i < heads.length; i++) {
+        thh = document.createElement("th");
+        thh.innerText = heads[i];
+        trh.appendChild(thh);
+    }
+    var trd;
+    var td;
+    var a;
+
+    for (var i = 0; i < datas.length; i++) {
+        trd = document.createElement("tr");
+//    tr.index = i;
+        tbody.appendChild(trd);
+        for (var k in datas[i]) {
+            td = document.createElement("td");
+            trd.appendChild(td);
+            td.innerText = datas[i][k];
+        }
+        //删除操作；
+        td = document.createElement("td");
+        trd.appendChild(td);
+        link = document.createElement("a");
+//    link.href = "javascript:void(0);";
+        link.href = "javascript:;";//一个空链接，Javascript伪协议。（与#有区别。）
+        link.innerText = "删除";
+        td.appendChild(link);
+
+        //删除节点。
+        link.onclick = creatdel;
+        //封装删除的函数。
+        function creatdel() {
+            var trde = this.parentNode.parentNode;
+            var trs = tbody.children;//指的是当前的tr的个数。
+            for (var i = 0; i < trs.length; i++) {
+                if (trs[i] == trde) {//说明指针相等。
+                    //说明自己在行内找到了自己，
+                    //利用数组中的删除的指定操作。splice(索引,删除的个数);
+                    datas.splice(i, 1);
+//          tbody.removeChild(trde);
+                    break;//说明找到了当前的数据。
+                }
+            }
+            tbody.removeChild(trde);
+            console.log(datas);
+            return datas;
+        };
+//        console.log(datas);
+
+    }
+
+    //    console.log(datas);
+    //添加功能、：
+    var add = document.getElementById("add");
+    var tr, td, input, linka, linkd;
+    add.onclick = function () {
+        tr = document.createElement("tr");
+        for (var i = 0; i < heads.length - 1; i++) {
+            td = document.createElement("td");
+            tr.appendChild(td);
+            //在添加的单元格里面添加text表单
+            input = document.createElement("input");
+            input.type = "text";
+            td.appendChild(input);
+//            td.innerText = input.value;
+        }
+        td = document.createElement("td");
+        linka = document.createElement("a");
+        linkd = document.createElement("a");
+        //添加保存 与删除的按钮
+        td.appendChild(linka);
+        linka.innerText = "保存";
+        linka.href = "javascript:;";
+        td.appendChild(linkd);
+        linkd.innerText = "删除";
+        linkd.href = "javascript:;";
+        tr.appendChild(td);
+        //将添加的一行存入到tbody里面。
+        tbody.appendChild(tr);
+
+        linka.onclick = function () {
+            //获取点击保存的这行的的每个td
+            var arr = this.parentNode.parentNode.children;
+            var inputa;
+            //遍历td,将td里面input的内容复制给td,
+            for (var i = 0; i < arr.length - 1; i++) {
+                inputa = arr[i].children[0];
+                arr[i].innerHTML = inputa.value;
+            }
+//            添加模拟数据库中的数据
+            datas[datas.length] = {
+//                "name": "张三1", "subject": "语文1", "score": 99.8,
+                "name": arr[0].innerText,
+                "subject": arr[1].innerText,
+                "score": arr[2].innerText
+            }
+//            console.log(datas);
+            //保存之后保存按钮对应的父元素变成单个的删除
+            var a = document.createElement("a");
+            a.href = "javascript:;";
+            a.innerText = "删除";
+            var pa = this.parentNode.parentNode;
+            this.parentNode.parentNode.removeChild(this.parentNode);
+            var td = document.createElement("td");
+            td.appendChild(a);
+            pa.appendChild(td);
+            a.onclick = creatdel;
+//            a.onclick = function () {
+//                var trde = this.parentNode.parentNode;
+//                var trs = tbody.children;//指的是当前的tr的个数。
+//                for (var i = 0; i < trs.length; i++) {
+//                    if (trs[i] == trde) {//说明指针相等。
+//                        //说明自己在行内找到了自己，
+//                        //利用数组中的删除的指定操作。splice(索引,删除的个数);
+//                        datas.splice(i, 1);
+////          tbody.removeChild(trde);
+//                        break;//说明找到了当前的数据。
+//                    }
+//                }
+//                tbody.removeChild(trde);
+//                console.log(datas);
+//            };
+//            console.log(datas);
+        };
+        linkd.onclick = function () {
+            tbody.removeChild(this.parentNode.parentNode);
+        };
+
+    };
+
+</script>
+
+</body>
+
+</html>

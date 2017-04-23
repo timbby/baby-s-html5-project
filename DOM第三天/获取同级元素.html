@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<ul>
+    <li id="list"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div></div>
+<div></div>
+<script>
+//    var list = document.getElementById("list");
+//    var psr = list.parentNode;
+//    var ps = psr.children;
+//    var result = [];
+//    for (var i = 0; i < ps.length; i++) {
+//      if(ps[i]!==list){
+//          result[result.length] = ps[i];
+//      }
+//    }
+//    console.log(result);
+    //封装函数
+    var list = document.getElementById("list");
+    var paren = document.getElementsByTagName("ul")[0];
+     getBro("list"); //但是要求父级元素的同级，需要传入标签
+    getBro("paren");
+    function getBro(clan){
+//        var list = document.getElementById(id);
+        var psr = clan.parentNode;
+        var ps = psr.children;
+        var result = [];
+        for (var i = 0; i < ps.length; i++) {
+            if(ps[i]!==clan){
+                result[result.length] = ps[i];
+            }
+        }
+        console.log(result);
+    }
+</script>
+</body>
+</html>

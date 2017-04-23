@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //函数作为另一个函数的参数使用这种形式称为 回调函数。
+    
+    //1 计算1-7之间所有数的和
+    //2 计算1-7之间所有数的乘积
+    
+    function getJG(fn) {
+      var sum = 0, ji = 1;
+      for (var i = 1; i <= 7; i++) {
+        sum += i;
+        ji *= i;
+      }
+      //3 计算和与乘积的和
+      //return sum + ji;
+      //4 计算和与乘积的差
+      //return sum - ji;
+      //5 计算和与乘积的乘积
+      //return sum * ji;
+      
+      //我们发现，函数整体功能一定，但是，最后对结果的处理方式不同
+      //我们不确定，只能在用户具体使用的时候确定
+      return fn(sum, ji);
+    }
+    
+    //1 需要两个数的和
+    function getSum(n, m) {
+      return n + m;
+    }
+    console.log(getJG(getSum));
+    
+    //2 需要两个数的差
+    console.log(getJG(function (n, m) {
+      return n - m;
+    }));
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

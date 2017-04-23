@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<ul id="list">
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+</ul><ul>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+    <li>我是li标签</li>
+</ul>
+<script>
+    var list = document.getElementById("list");
+    var lis = list.getElementsByTagName("li");
+//    var lis = document.getElementsByTagName("li");
+    for (var i = 0; i < lis.length; i++) {
+      if(i % 2==0){
+          lis[i].style.color = "pink";
+          lis[i].style.backgroundColor = "purple";
+      }
+        else {
+          lis[i].style.color = "red";
+          lis[i].style.backgroundColor = "skyblue";
+      }
+    }
+</script>
+</body>
+</html>

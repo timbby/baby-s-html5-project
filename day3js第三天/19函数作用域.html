@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //重点：
+    
+    //作用域：变量起作用的范围
+    
+    //1 全局作用域：script内部并且不在任意函数内
+    //2 局部作用域：任意一个函数内部均为独立作用域,在js中有且仅有函数可以分割作用域(所以我们又将局部作用域称为函数作用域)
+
+    //当变量声明在不同的作用域中，访问的范围也不同
+    
+    //3 全局变量：声明在全局作用域中的变量称为全局变量，在全局任意位置均可访问
+    
+//    var num = 100;
+//    console.log(num);//全局作用域下访问全局变量
+//
+//    function fun() {
+//      console.log(num);//局部作用域下访问全局变量
+//    }
+//    fun();
+
+    //4 局部变量：声明在局部作用域中的变量称为局部变量，只能在声明这个变量的作用域内部使用
+    
+    function fun() {
+      var num = 100;
+      console.log(num+"这是fun内部访问结果");//局部作用域下访问局部变量
+      
+      function fun1() {
+        console.log(num+"这是fun1内部访问结果");
+      }
+      fun1();
+      
+      
+    }
+    fun();
+
+    console.log(num);//全局作用域下访问局部变量
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

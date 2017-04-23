@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [1,2,3,[2,3,4],6,7];
+        console.log(arr);
+        for (var i = 0; i < arr.length; i++) {
+            //由于数组中arr中的某些元素也为数组，需要针对于=这些数组进行再遍历
+            if(Array.isArray(arr[i])){
+                for(var j = 0; j<arr[i].length; j++){
+                    //从左往右看，arr是一个数组，arr[i]能走到这个位置，说明也是一个数组
+                    //使用索引值到arr[i]中取值，形成了arr[i][j];
+                    console.log(arr[i][j]);
+                }
+            }
+            else{
+                console.log(arr[i]);
+            }
+
+        }
+        console.log(typeof null);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

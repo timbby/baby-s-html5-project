@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    button {
+      width: 46px;
+      height: 25px;
+      background-color: orange;
+    }
+    
+    /*.colorRed{*/
+    /*background-color: red;*/
+    /*}*/
+  </style>
+</head>
+<body>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+<script>
+  //点击某个按钮时，这个按钮变色，同时其他已经变色的按钮进行还原
+  
+  //我们需要找到上次变过色的按钮，进行清除：
+  //1 清除所有人，这时内部肯定有一个标签是更改过颜色的，直接清除即可
+  //2 准确的找到上一次变色的按钮，进行对应清除（有些复杂，但是执行效率高）
+  
+  
+  var btns = document.getElementsByTagName("button");
+  //声明一个变量，用于保存上一次点击过的元素的索引值
+  var num = 0;//初始值为0，于情于理都合适
+  
+  //遍历
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].suoyin = i;
+    
+    //添加点击事件
+    btns[i].onclick = function () {
+      //先找到上次点击的元素在清除(必须在前面，防止用户点击自己)
+      btns[num].style.backgroundColor = "orange";
+      
+      //修改当前操作的按钮的颜色
+      this.style.backgroundColor = "red";
+      
+      //需要将当前操作的按钮的索引值保存在num中
+      //console.log(this.suoyin);//数值
+      //我们可以将这个数据当作索引值使用
+      num = this.suoyin;
+    };
+  }
+
+
+</script>
+</body>
+</html>

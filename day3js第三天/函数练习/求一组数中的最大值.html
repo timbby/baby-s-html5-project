@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //定义一个求最大值的数组函数
+        function Max(arr){
+            //定义一个存储最大值的变量
+            var max = arr[0];//假设最大值为数组的第一位数（可以减少循环的次数）
+            for(var i = 1; i <= arr.length-1; i++){//利用索引对数组进行遍历
+                if(arr[i] >= max){ //判断数组中的元素与假设的最大值做比较，如果元素较大则将假设的最大值赋值
+                    max = arr[i];
+                }
+            }
+            return max;
+        }
+        var arr = [2, 5, 7, 4, 9]
+        console.log(Max(arr));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

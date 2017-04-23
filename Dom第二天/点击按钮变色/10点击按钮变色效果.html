@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    .colorRed {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+<script>
+  
+  //效果，某个按钮点击后，变色，变色的同时，将其他已经具有颜色的标签清除颜色
+  
+  //1 获取元素
+  var btns = document.getElementsByTagName("button");
+  
+  //2 遍历，给每个btn添加点击事件
+  
+  //每次点击时，使用变量记录当前点击的这个按钮的索引值
+  //目的是为了下一次点击时进行对应的清除
+  var suoyin = 0;
+  
+  
+  for (var i = 0; i < btns.length; i++) {
+    //设置每个btn的自定义属性
+    btns[i].index = i;
+    
+    btns[i].onclick = function () {
+      //先进行对btns[suoyin]这个标签的清除
+      btns[suoyin].className = "";
+      
+      //3 修改标签的颜色，使用className属性
+      this.className = "colorRed";
+      
+      //点击后，更新suoyin中保存的值
+      suoyin = this.index;
+    };
+  }
+
+
+</script>
+
+</body>
+</html>

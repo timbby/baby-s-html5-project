@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 250px;
+      height: 100px;
+      padding: 10px;
+      margin: 100px auto;
+      text-align: center;
+      border: 1px solid #000;
+    }
+    
+    .container input {
+      color: gray;
+    }
+    
+    .container span {
+      border: 1px solid #000;
+      width: 240px;
+      display: none;
+    }
+    
+    .container span.show {
+      display: block;
+    }
+    
+    .container span.right {
+      display: block;
+      border: 2px solid #6cff52;
+      background-color: #e5ffd1;
+    }
+    
+    .container span.wrong {
+      display: block;
+      border: 2px solid #f32b35;
+      background-color: #ffc1b4;
+    }
+  
+  </style>
+</head>
+<body>
+<div class="container">
+  用户名：<input id="ipt" type="text" value="请输入用户名">
+  <br>
+  <br>
+  <span id="span">请输入admin</span>
+</div>
+
+<script>
+  // 获取焦点
+  //1 检测用户输入内容，如果是默认文本，清空
+  //2 底部的提示框进行显示
+  
+  // 失去焦点操作(检测内容是否正确)
+  //1 空""
+  //2 正确"admin"
+  //3 错误:情况很多，只要不是""和"admin"均为错误，所以，放到else中进行处理
+  //每种情况均需要操作span的内容和类名
+  
+  //实现：
+  //1 获取元素
+  var ipt = document.getElementById("ipt");
+  var sp = document.getElementById("span");
+  ipt.onfocus = function(){
+    if(ipt.value =="请输入用户名"){
+      ipt.value = "";
+      sp.className = "show";
+    }
+  }
+  ipt.onblur = function(){
+    if(ipt.value == ""){
+      ipt.value = "请输入用户名";
+      sp.innerHTML = "请输入admin";
+        sp.className = "";
+    }else if(ipt.value == "admin"){
+      sp.className = "right";
+      sp.innerHTML = "您输入的正确";
+//      ipt.value = "";
+    }
+    else {
+      sp.className = "wrong";
+      sp.innerHTML = "您输入的错误";
+//      ipt.value = "";
+    }
+  }
+
+
+</script>
+</body>
+</html>

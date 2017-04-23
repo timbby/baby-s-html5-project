@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //!!!写题先写注释!!!
+  </script>
+</head>
+<body>
+
+<div id="box">
+  呵呵呵
+  <ul>
+    <li>我是li</li>
+    <li>我是li</li>
+    <li>我是li</li>
+    <li>我是li</li>
+  </ul>
+</div>
+
+<script>
+  //innerHTML既可以操作纯文本内容，也可以生成标签，功能较多
+  //我们在对标签进行纯文本操作时如果使用innerHTML，性能消耗较大
+  
+  var box = document.getElementById("box");
+  //如果使用纯文本操作，可以使用innerText属性
+  //  console.log(box.innerText);
+  //设置时只能设置纯文本，如果传入的内容具有标签，不会生成，会当作字符打印
+  //  box.innerText = "哈哈哈<p>我是p标签的文本</p>";
+  
+  
+  //innerText属性是ie提出的属性，其他浏览器的低版本支持性不好
+  //除了ie全部支持以外，其他浏览器均会具有兼容性问题
+  
+  //其他的浏览器支持textContent属性
+  //使用方式与innerText相同
+  //标签.textCotent
+  //console.log(box.textContent);
+  
+  //此属性在ie9以下不支持
+  
+  
+  //操作分析：
+  //因为现在要操作纯文本内容，有两种方式，并且两种方式均存在兼容性问题
+  //我们需要书写一段代码，对两种设置方式进行兼容
+  
+  //能力检测：检测浏览器行不行（检测支持哪一个功能）
+  //我们无法判断用户使用的浏览器是什么。也无法要求用户使用某个特定的浏览器
+  //使用特定的某个属性和方法，在执行时查看执行的结果，根据结果进行判断，如果可以使用，就使用这个功能
+  //如果不能用，就使用其他对应的属性
+  
+  //如果浏览器不认识这个属性，那么值为undefined
+  if (box.innerText !== undefined) {
+    //说明支持
+    console.log(box.innerText);
+  } else {
+    //不支持innerText，使用textContent
+    console.log(box.textContent);
+  }
+  
+  getText(box);
+  
+  function getText(tag) {
+    //如果浏览器不认识这个属性，那么值为undefined
+    if (tag.innerText !== undefined) {
+      //说明支持
+      return tag.innerText;
+    } else {
+      //不支持innerText，使用textContent
+      return tag.textContent;
+    }
+  }
+  
+  function setText(tag, text) {
+    if (tag.innerText !== undefined) {
+      tag.innerText = text;
+    } else {
+      tag.textContent = text;
+    }
+  }
+
+
+</script>
+</body>
+</html>

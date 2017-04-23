@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //1 数组的类型检测 ： Array.isArray(数据)  instanceof  Object.prototype.toString.call(数据) [object Array]
+    //2 数据在内存中的保存方式：基本类型数据在内存单元中保存的是具体值，复杂数据类型在内存单元中保存的是具体值的指针(引用)
+    //基本数据类型又称为值类型 ，复杂数据类型学有称为引用类型
+    
+    //3 函数的作用：重用
+    //4 与for的区别：函数的灵活性比for高，当我们需要机械的重复执行代码使用for，否则使用函数
+    //5 函数的声明方式：   函数声明语句 function 函数名(){}  函数表达式 var fun = function(){};
+    //6 函数调用：函数不调用，内部代码无法执行。
+    //      调用的语法： 函数名();
+    //      什么时候进行函数调用？哪个位置需要执行代码就在哪里调用
+    
+    //7 函数的参数：  什么时候使用参数？ 当一个函数功能一定，但是内部的某些数据不确定，使用参数
+    //      形参：书写在函数体的小括号中，作用为，给实参占位置(等待实参传递值后，执行内部代码)
+    //      实参：书写在调用的小括号中，作用为给形参传递执行时的值。
+    // 参数的本质：参数实际上相当于函数内声明的变量，也就是局部变量，无法在函数外使用（一般也不会这么写）
+    
+    //8 函数的返回值： 为什么要有返回值？原因是通过函数进行计算后，得到的结果在函数外无法访问，需要返回值。
+    //  语法：  return 值;
+    //  接收方式：函数调用本身就是返回值
+    //  return的其他作用：跳出函数
+    //  由于这个特性，一个函数只能有一个返回值，并且书写位置应当为函数结束的最后位置
+    
+    
+    //9 作用域： 全局作用域     局部作用域
+    //10 全局变量：全局均可访问
+    //   局部变量：只能在声明这个变量的局部作用域中进行访问
+    
+    //访问规则：当我们使用一个变量时，首先会在当前作用域中查找这个变量的声明，
+    // 如果找不到，项父级作用域查找，如果还找不到，一直向上查找，如果到全局作用域中还是找不到:
+    //1 如果是直接取值(num)，报错
+    //2 如果是进行赋值操作(num = 100;)，会声明一个全局变量
+    
+    //11 预解析: 任意作用域代码执行前均会发生预解析
+    //  1 找var，将变量声明语句提升到当前作用域顶端，赋值保留在原地
+    //  2 找function函数声明语句,将函数体整体提升到当前作用域顶端，调用保留在原地
+    //  3 以上两点不分先后
+    
+    //什么时候我们需要分析预解析？当我们使用的代码，不是正常的符合规范的代码时，才需要考虑。
+    
+    //12 函数参数值传递(复制：根据数据类型不同，复制的结果也不同)
+    // 参数为基本数据类型：实参和形参毫无关系
+    // 参数为复杂数据类型：实参和形参实际上是同一个数据(相等)
+    
+    //13 arguments:
+    //   arguments表示一个函数的实参列表，是伪数组形式
+    //   伪数组：具有数组形式但是没有数组方法.
+    //   功能，可以模拟函数重载
+    
+    
+    //    function getSum() {
+    //      //遍历arguments，取出所有实参
+    //      var sum = 0;
+    //      for (var i = 0; i < arguments.length; i++) {
+    //        sum+=arguments[i];
+    //      }
+    //      return sum;
+    //    }
+    //    console.log(getSum(1, 2, 3));
+    //    console.log(getSum(1, 2, 3, 4, 5, 6, 7));
+    //
+    
+    //函数内调用函数的执行方式
+    //    //1 比較两个数的最大值
+    //    function getMax2(n, m) {
+    //      return n > m ? n : m;
+    //    }
+    //
+    //    //2 比較三个数最大值
+    //    function getMax3(n1, n2, n3) {
+    //      var max = getMax2(n1, n2);
+    //      return getMax2(max, n3);
+    //    }
+    //
+    //    getMax3(1, 2, 3);
+    //
+    
+    
+    //函数内调用函数的执行顺序分析(中文描述)
+    //求一组数中的最大值
+    //    var arr = [1, 2, 3, 4, 5];
+    //    getMax(arr);
+    //    function getMax(arrIn) {
+    //      var max = arrIn[0];
+    //      for (var i = 1; i < arrIn.length; i++) {
+    //        if (arrIn[i] > max) {
+    //          max = arrIn[i];
+    //        }
+    //      }
+    //      //最终要的是max
+    //      return max;
+    //    }
+    
+    
+    //求一组数中的最小值
+    //翻转数组，返回一个新数组
+    //对数组排序，从小到大
+    
+    //    var arrOut = [3, 2, 1];
+    //    function sorted(arr) {
+    //      var j, temp;
+    //      for (var i = 0; i < arr.length - 1; i++) {
+    //        for (j = 0; j < arr.length - 1 - i; j++) {
+    //          if (arr[j] > arr[j + 1]) {
+    //            temp = arr[j];
+    //            arr[j] = arr[j + 1];
+    //            arr[j + 1] = temp;
+    //          }
+    //        }
+    //      }
+    //由于arr的值为复杂数据类型，arr和arrOut其实是同一个数据
+    //如果设置了返回值。在外界就会有两个变量控制同一个数据，没有意义
+    //所以不需要设置返回值。
+    //return arr;
+    //}
+    //    var resultArr = sorted(arrOut);
+    //    console.log(resultArr);
+    //    console.log(arrOut);
+    //
+    //    resultArr[0] = 200;
+    //    console.log(resultArr);
+    //    console.log(arrOut);
+    //
+    
+    //判断一个数是否是质数
+    //方式1：可以返回一个bool值
+    //方式2：弹出提示框
+    
+    function isZS(num) {
+      var flag = true;
+      for (var i = 2; i < num; i++) {
+        if (num % i == 0) {
+          flag = false;
+          break;
+        }
+      }
+
+//      if (flag == true) {
+//        return true;
+//      } else {
+//        return false;
+//      }
+      
+      //化简代码
+      return flag;
+    }
+    //    console.log(isZS(13));
+    //    console.log(isZS(14));
+    
+    
+//    f1();
+//    console.log(c);
+//    console.log(b);
+//    console.log(a);
+//    function f1() {
+//      var a = b = c = 9; //var a = 9;  b = 9; c = 9;
+//      console.log(a);
+//      console.log(b);
+//      console.log(c);
+//    }
+    
+    
+    //求兔子第n个月的对数1 1 2 3 5 8 13 21...
+  
+    
+    //函数的类型：检测方式typeof  结果为function
+    
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

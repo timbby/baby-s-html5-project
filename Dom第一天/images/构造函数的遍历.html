@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var obj = {
+            name : "花",
+            age : "19",
+            say : function(){
+                console.log("花在家");
+            }
+        };
+
+        for(var k in obj){
+            console.log(k);
+
+            if(typeof obj[k] == "function"){
+//                console.log(obj[k]());
+                obj[k]();
+            }
+            else {
+                console.log(obj[k]);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

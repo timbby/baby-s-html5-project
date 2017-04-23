@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //1 函数也是一个数据类型,使用上和其他的数据没有本质区别
+    //2 函数同样可以作为参数使用
+    
+    //3 什么时候需要传递函数参数？
+    
+    
+    function myDay(zaoCan, fn) {
+      console.log("起床");
+      console.log("在家吃早饭,吃的是" + zaoCan);
+      console.log("上午上课,抽烟");
+
+//      //情况1：可能中午要吃饭后睡觉
+//      console.log("我要吃饭");
+//      console.log("我睡觉");
+//      //情况2：可能中午要吃饭后要讨论工作
+//      console.log("我要吃饭");
+//      console.log("我讨论工作");
+//      //情况3：可能中午要吃饭后要回家拿点东西
+//      console.log("我要吃饭");
+//      console.log("我回家");
+      
+      //当我们的函数内部有一些内容不定，使用参数
+      //1 当值不确定，传值
+      //2 当内部的某一部分功能不确定，需要传代码(不能直接传代码结构，使用函数包裹后传递)
+      
+      //传参后，找到指定的位置后，调用传入的函数即可
+      fn();
+      
+      console.log("下午上课");
+      console.log("回家");
+    }
+    
+    //1 书写一个函数，作用为包裹第一天中午要执行的代码
+    function day1() {
+      console.log("我要吃饭");
+      console.log("我睡觉");
+    }
+    
+    //2 书写一个函数，作用为包裹第2天中午要执行的代码
+    function day2() {
+      console.log("我要吃饭");
+      console.log("我讨论课程内容");
+    }
+    myDay("萝卜", day1);
+    myDay("白菜", day2);
+    
+    //我们可以使用匿名函数的方式，替代命名函数进行传参(减少函数名的占用)
+    myDay("烧饼", function () {
+      console.log("今天天气不错,什么也不想做");
+    });
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 150px;
+            border: 1px solid #000;
+            float: left;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        p {
+            background-color: #ff1f30;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+</div>
+<div id="box2"></div>
+
+<script>
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var move = box1.getElementsByTagName("p");
+    var par;
+    for (var i = 0; i < move.length; i++) {
+        move[i].onclick = function () {
+            par = this.parentNode;
+            if (par == box1) {
+                box2.appendChild(this);
+            }
+//            move2 = box2.getElementsByTagName("p");}
+            else {
+                box1.appendChild(this);
+            }
+
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

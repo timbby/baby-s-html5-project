@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //将一个函数作为另一个函数的参数使用
+    
+    //因为函数本身也是一个数据类型，他就和其他的数据没有区别，使用上是相同的，只不过多了一个调用的功能
+    
+    
+    function myDay(zaoCan, wanFan, func) {
+      console.log("起床");
+      console.log("上厕所");
+      console.log("洗漱");
+      console.log("在家吃早饭,吃的是" + zaoCan);
+      console.log("穿衣服");
+      console.log("坐公交车上班");
+      console.log("上午上课,抽烟");
+      console.log("中午吃饭");
+      //----------------
+//      //1 午休
+//      console.log("午休");
+//      //2 中午我跟其他的讲师讨论了一下课程
+//      console.log("课程讨论");
+//      //3 吃坏肚子了，一中午都在....
+//      console.log("pupupu");
+      
+      //我们需要在子功能不确定的位置，调用用户传入的内容
+      
+      
+      //--------------------
+      console.log("下午上课，抽烟");
+      console.log("吃晚饭,吃得是" + wanFan);
+      console.log("回家陪女朋友看看电视剧");
+      console.log("洗洗睡了");
+      console.log("------------------");
+      func();
+//      fun()()
+    }
+    
+    //程序中：
+    //1 功能一定，但是某些值不确定，我们传递一些数据参数即可
+    //2 整体功能一定，但是内部的某些子功能不确定,就需要将一些代码作为参数传递
+    //在js中只有函数可以保存代码，当我们想要传递代码时，需要使用函数包裹后再整体传递即可（传递的是函数体）function
+
+    (function fun(){
+      console.log("呵呵呵,今天天气不错");
+      return 1;
+    })();
+    myDay("kll","lll",fun);
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

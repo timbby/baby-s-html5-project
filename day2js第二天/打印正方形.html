@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    //创建一个10行
+//    var j;//防止重复声明，将写在外面
+//    for(var i = 0; i < 10; i++){
+//        //创建一个10列
+//        for( j = 0;j < 10; j++){
+//            document.write("★");
+//        }
+//        document.write("<br />");
+//    }
+    //打印直角三角形
+//    var j ;
+//    for(var i = 1; i <= 5; i++){//创建一个5行的
+//        for(j = 1; j <= i ; j++){
+//            document.write("★")
+//        }
+    //换行
+//        document.write("<br />");
+//    }
+    //打印9*9乘法表
+    //创建一个9行的表
+    document.write("<table>");
+    var j;
+    for(var i = 1; i <= 9 ; i++){
+        //创建一个9行的列
+        document.write("<tr>");
+        for(j = 1; j <=i ; j++){//每行的数据为1-i的变换值
+
+            document.write("<td>" + j + "×" + i + "=" + i*j + "</td >");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+<style>
+    table {
+        /*border : 1px;*/
+        /*border-color : red;*/
+    }
+    td {
+        border:1px solid pink;
+        /*border-color: pink;*/
+        margin : 2px;
+        padding: 2px;
+    }
+</style>
+<body>
+
+</body>
+</html>

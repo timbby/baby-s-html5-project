@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--遍历li标签-->
+<ul>
+    <li>今天天气很好！</li>
+    <li>今天天气很好！</li>
+    <li>今天天气很好！</li>
+    <li>今天天气很好！</li>
+</ul>
+<script>
+    var lis = document.getElementsByTagName("li");
+    for (var i = 0; i < lis.length; i++) {
+//        lis[i].index = i;
+//        lis[i].onclick = function () {
+//            console.log(this.index);
+//        };
+        (function(){
+            var j = i;
+            lis[i].onclick = function(){
+                console.log(j);
+            };
+        })();
+
+
+    }
+</script>
+</body>
+</html>

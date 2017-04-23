@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //1 页面加载时，会解析html生成树模型(节点树)
+  //节点：对节点树中所有内容的统称
+  
+  //2 常见的节点:
+  // 元素节点 : 标签
+  // 文本节点 : 文本
+  // 属性节点 ：属性
+  // 根节点 ：document
+  // 注释节点 ： 注释
+  
+  //3 节点树的作用：根据树模型的每个节点的关系，提供给我们一套节点访问关系(父子关系（上下级），兄弟关系（同级）)
+  
+  // 父节点(父元素)：parentNode属性
+  // 子节点： 所有子节点  childNodes
+  //        所有元素子节点  children
+  
+  // 第一个子节点  firstChild
+  //  第一个元素子节点  firstElementChild    标签.children[0]
+  
+  // 最后一个：  lastChild  lastElementChild  标签.children[标签.children.length-1]
+  
+  //同级元素：
+  //前一个  previousSibling   previousElementSibling
+  //后一个  nextSibling   nextElementSibling
+  
+  //获取所有同级元素的函数
+  function getSib(item) {
+    var resultArr = [];
+    //1 先获取父元素
+    var fa = item.parentNode;
+    
+    //2 再取儿子
+    var sis = fa.children;
+    
+    //3 找到不是自己的其他元素
+    for (var i = 0; i < sis.length; i++) {
+      if (sis[i] != item) {
+        resultArr[resultArr.length] = sis[i];
+      }
+    }
+    return resultArr;
+  }
+
+  //移动节点操作：
+  //追加子节点  父节点.appendChild(要插入的子节点);  添加到最后
+  //插入子节点  父节点.insertBefore(要插入的节点,参考的子节点);
+  
+  //insertBefore的特殊用法，如果第二个参数传了一个空值 null undefined
+  // 添加位置为最后。
+  
+
+</script>
+</body>
+</html>

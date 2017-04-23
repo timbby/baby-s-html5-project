@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //利用求阶乘的和来举例子
+        //求单个数的阶乘
+        function jc(num){ //定义一个函数
+            var ji = 1; //声明一个变量用来存储单个数字的阶乘
+            for(var i = 1; i <= num; i++){//进行数字的遍历
+                ji *= i;
+            }
+            return ji;//返回对应数字的阶乘
+        }
+
+        //求n-m之间阶乘的和
+        function jcAll(n,m){//定义一个函数求阶乘和的函数
+            var sum = 0;//声明一个变量来存储变量阶乘的和
+            for(var i = n; i <= m; i++){//用来遍历所需数据之间的数字
+                sum += jc(i);//对每个数字的阶乘进行累加
+            }
+            return sum;//返回对应阶乘的和
+        }
+
+        //需要求2-10的阶乘的和
+        //调用函数
+        console.log(jcAll(2, 10));
+
+        //文字描述步骤：1.找到执行语句console.log(jcAll(2, 10));
+        //            2.访问被调用的函数jcAll，
+        //            3.执行函数jcAll之间的语句，遇到sum += jc(i)语句，调用jc函数
+        //            4.根据jc函数，返回给jcAll对应i的数字的阶乘,在for循环里面多次执行jc函数得到对应数字的阶乘返回给jcAll函数，jcAll函数
+        //                  利用sum+=jc(i),将所有返回的单个数字的阶乘逐步累加。最终跳出循环，返回一个sum值给控制台。
+    </script>
+</head>
+<body>
+
+</body>
+</html>

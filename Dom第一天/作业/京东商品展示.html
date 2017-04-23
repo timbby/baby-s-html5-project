@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul , li{
+            list-style: none;
+            float:  left;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="top">
+            <img src="../images/01big.jpg" alt="" id="pic">
+        </div>
+        <ul id="lis">
+            <li id="one"> <img src="../images/01.jpg" alt="1"></li>
+            <li id="two"> <img src="../images/02.jpg" alt="2"></li>
+            <li id="three"> <img src="../images/03.jpg" alt="3"></li>
+            <li id="four"> <img src="../images/04.jpg" alt="4"></li>
+            <li id="five"> <img src="../images/05.jpg" alt="5"></li>
+        </ul>
+    </div>
+<script>
+
+    //大盒子设置宽 高和边框。
+    var main = document.getElementById("main");
+    main.style.width = "360px";
+    main.style.height = "440px";
+//    main.style.backgroundColor = "pink";
+    main.style.margin = "30px auto";
+    main.style.border ="1px solid #ccc"
+    //设置小盒子的宽 高
+    var top1 = document.getElementById("top");
+    top1.style.width = "360px";
+//    top1.style.height = "360px";
+//    top1.style.backgroundColor = "blue";
+//    li标签里面都有一个图
+    var pic =document.getElementById("pic");
+    var lis = document.getElementById("lis");
+
+    var bj = lis.getElementsByTagName("img");
+    for (var i = 0; i < bj.length; i++) {
+        bj[i].onclick = function(){
+            pic.src = "../images/0"+ this.alt+"big.jpg";
+        }
+    }
+
+</script>
+</body>
+</html>

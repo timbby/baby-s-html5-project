@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box" class="box fr">
+  呵呵呵
+</div>
+<script>
+  var box = document.getElementById("box");
+  //兼容性问题：
+  //某些功能在使用时，多个浏览器的实现方式不统一
+  //例如：ie实现文本操作使用innerText。但是其他浏览器使用的是textContent
+  
+  //能力检测：简单，有效
+  //我们做的兼容性设置方式，并不是检测执行时的这个浏览器是什么，而是检测这个浏览器是否具有某项功能
+  //如果有，使用，如果没有，更换为对应的方式执行
+  
+  
+  //  function getText(tag) {
+  //    //文本内容操作的兼容：
+  //    if (tag.innerText !== undefined) {
+  //      //取值有效，使用innerText属性
+  //      return tag.innerText;
+  //    } else {
+  //      //取值无效，使用textContent属性即可
+  //      return tag.textContent;
+  //    }
+  //  }
+  //  function setText(tag, content) {
+  //    //文本内容操作的兼容：
+  //    if (tag.innerText !== undefined) {
+  //      //取值有效，使用innerText属性
+  //      tag.innerText = content;
+  //    } else {
+  //      //取值无效，使用textContent属性即可
+  //      tag.textContent = content;
+  //    }
+  //  }
+  //
+  //如果我们想要将两个功能相近的函数合并为同一个，第一步是找到不同的使用方式(通常指的是参数的使用)
+  //根据使用的不同方式进行判断
+  
+  function text(tag, content) {
+    //情况分为两种：
+    //1 参数2有值
+    if (content !== undefined) {
+      //文本内容操作的兼容：
+      if (tag.innerText !== undefined) {
+        //取值有效，使用innerText属性
+        tag.innerText = content;
+      } else {
+        //取值无效，使用textContent属性即可
+        tag.textContent = content;
+      }
+    } else {
+      //2 参数2没值
+      //文本内容操作的兼容：
+      if (tag.innerText !== undefined) {
+        //取值有效，使用innerText属性
+        return tag.innerText;
+      } else {
+        //取值无效，使用textContent属性即可
+        return tag.textContent;
+      }
+    }
+  }
+  
+  //console.log(text(box));
+  //text(box, "今天天气不错");
+  
+  
+  //样式操作部分：
+  //1 设置部分，我们可以使用style的方式即可
+  
+  //2 获取部分：使用style的方式，只能获取到标签行内的样式值
+  //  需要使用新的通用获取的方式：
+  //  2.1 getComputedStyle(标签,null)  整体获取的结果是所有的计算后的样式 (对象类型)
+  //   使用方式为，通过该方法获取结果后，在.具体的样式名，即可取值，取得结果字符串，带单位
+  // console.log(getComputedStyle(box, null).width);
+  //  该方法，在ie9以下不支持
+  
+  //2.2 ie支持 标签.currentStyle属性 获取的结果与getComputedStyle相同
+  
+  
+  //书写兼容代码：
+  //由于每个方式的结构不同（一个是函数形式，一个是属性形式），在进行能力检测时又先后顺序的问题
+  
+  //先写currentStyle,原因是，属性如果不存在，值为undefined，但是如果函数不存在，报错
+  //为了保证不报错，先检测属性操作部分
+  
+  
+  //  function getStyle(tag, attr) {
+  //    if (tag.currentStyle) {
+  //      return tag.currentStyle[attr];
+  //    } else {
+  //      return getComputedStyle(tag, null)[attr];
+  //    }
+  //  }
+  //  console.log(getStyle(box, "width"));
+  
+  
+  //根据类名获取元素的方式：
+  // document.getElementsByClassName("类名");
+  // document可以修改为任意标签，表示在某个标签内根据类名获取元素
+  // 获取结果是伪数组
+  // ie9以下不支持，也没有对应的功能可以使用，只能自己书写
+  
+  //字符串方法:  字符串.split("分割的字符串")   var str = "a-b-c";  str.split("-");//结果为["a","b","c"]
+  
+  
+  getByClass("box");
+  function getByClass(cls, tarEle) {
+    //设置tarEle的默认值
+    tarEle = tarEle || document.body;
+    
+    //1 能力检测
+    //if (document.getElementsByClassName) {
+    if (typeof document.getElementsByClassName == "function") {
+      return tarEle.getElementsByClassName(cls);
+    } else {
+      //1 先获取所有标签
+      //2 依次检测每个标签的类名属性
+      //3 如果与我指定类名相同
+      //4 取出
+      
+      var tags = tarEle.getElementsByTagName("*");//由于我们需要的标签在body内部，获取时可以缩小范围
+      var resultArr = [];//用于保存结果
+      for (var i = 0; i < tags.length; i++) {
+        var tempClass = tags[i].className;
+        //考虑一个标签具有多个类名的情况。需要按照空格，将类名分割，再依次检测多个部分
+        var tempArr = tempClass.split(" ");
+        
+        for (var j = 0; j < tempArr.length; j++) {
+          if (tempArr[j] == cls) {
+            //取出
+            resultArr[resultArr.length] = tags[i];
+            //提高执行效率，减少循环次数
+            break;
+          }
+        }
+      }
+      return resultArr;
+    }
+  }
+  
+  //cssText属性：用于设置css形式的样式
+  //box.style.cssText = "width:100px;height:100px;background-color:red;";
+
+
+</script>
+</body>
+</html>

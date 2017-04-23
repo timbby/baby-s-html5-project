@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 150px;
+            background-color: #0099cc;
+        }
+    </style>
+</head>
+<body>
+<!--左边的下拉菜单   multiple：可以让下拉菜单多选 -->
+<select id="leftSel" size="10" multiple="multiple">
+    <option>苹果</option>
+    <option>香蕉</option>
+    <option>西瓜</option>
+    <option>牛油果</option>
+    <option>西红柿</option>
+</select>
+
+<!--四个选择按钮位置-->
+<input type="button" value=">>" id="allRight">
+<input type="button" value="<<" id="allLeft">
+<input type="button" value=">" id="right">
+<input type="button" value="<" id="left">
+
+<!--右边的下拉菜单-->
+<select id="rightSel" size="10" multiple="multiple">
+</select>
+<script>
+    //1.或许元素
+    var leftSel = document.getElementById("leftSel");
+    var rightSel = document.getElementById("rightSel");
+    var rightbtn = document.getElementById("right");
+    var leftbtn = document.getElementById("left");
+    var allRight = document.getElementById("allRight");
+    var allLeft = document.getElementById("allLeft");
+    //2.获取左边的option的个数。
+    var optl = leftSel.getElementsByTagName("option");
+
+    //3.点击右边移动的按钮，将选中的水果右移动
+    rightbtn.onclick = function () {
+//        var optr;
+        for (var i = 0; i < optl.length; i++) {
+            if (optl[i].selected) {
+                rightSel.appendChild(optl[i]);
+//              optr = rightSel.getElementsByTagName("option");
+                i--;
+            }
+        }
+    };
+    var optr = rightSel.getElementsByTagName("option");
+    leftbtn.onclick = function () {
+        for (var i = 0; i < optr.length; i++) {
+            if(optr[i].selected){
+                leftSel.appendChild(optr[i]);
+                i--;
+            }
+
+        }
+    };
+    allRight.onclick = function () {
+        for (var i = 0; i < optl.length; ) {
+          rightSel.appendChild(optl[i]);
+        }
+    };
+    allLeft.onclick = function () {
+        for (var i = 0; i < optr.length; ) {
+          leftSel.appendChild(optr[i]);
+        }
+    };
+
+</script>
+
+
+</body>
+</html>

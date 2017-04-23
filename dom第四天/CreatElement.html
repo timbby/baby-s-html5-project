@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+</div>
+<script>
+
+//    innerHTMl
+
+    var box = document.getElementById("box");
+    var str;
+    console.time("html");
+    for (var i = 0; i < 2000; i++) {
+        str = document.createElement("img");
+        box.appendChild(str);
+    }
+    console.timeEnd("html")
+</script>
+
+</body>
+</html>

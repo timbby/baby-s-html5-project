@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function create(name){
+            var obj = new Object();
+            obj.name = name;
+            obj.sing = function(){
+              console.log( name + "说空调好冷呀") ;
+            };
+            obj.hi = sayHi;
+            return obj ;
+        }
+        function fun(){
+            console.log("你说你是"+this.name);
+        }
+        var ok = create("小花");
+        console.log(ok.name);
+        ok.sing();
+        function sayHi(){
+            console.log("啦啦啦啦啦啦");
+        }
+        ok.hi();
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

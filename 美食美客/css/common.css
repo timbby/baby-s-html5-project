@@ -1,0 +1,103 @@
+/*css的初始化样式，一般用common,reset命名*/
+body {
+    background-color: #fff;
+    font:normal normal 12px "微软雅黑" ;
+    color: #666;
+    /*给body添加默认样式*/
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+img
+{
+    margin: 0;
+    padding: 0;
+    /*padding后面的分号可以要也可以不要*/
+    /*清除默认的margin和padding*/
+}
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font: 12px "微软雅黑";
+    /*去掉默认的样式以及添加默认字体样式*/
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a {
+    text-decoration: none;  /*去a标签除链接的下划线设置默认颜色*/
+    color: #666;
+}
+em,
+strong,
+b,
+u,
+i {
+    font-style: normal;
+    font-weight: normal;
+}
+ul,
+ol,
+li {
+    list-style: none;   /* 去除li标签前的点*/
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+}
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-size: 100%;
+}
+img {
+    border: 0 none;
+    /*去除图片在有些浏览器上面的默认边框*/
+}
+button,input {
+    outline: none;
+    /*去掉点击时造成的边框*/
+}
+.fl {
+    float: left;
+}
+.fr {
+    float:right;
+}
+
+
+.clearfix:after {			/*清除浮动*/
+    content: ".";
+    display: block;
+    height: 0;
+    line-height:0;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix {
+    *zoom:1;
+    /*加上*只给ie浏览器认识*/
+}
